@@ -15,12 +15,13 @@ export default class BookRequestScreen extends Component{
     }
 
     createUniqueId(){
-        return Math.random.toString(36).substring(7);
+        return Math.random().toString(36).substring(7);
     }
 
     addRequest=(bookName,reasonToRequest)=>{
         var userId=this.state.userId;
         var randomRequestId=this.createUniqueId();
+        console.log("Request Id : "+randomRequestId);
         db.collection("BookRequests").add({
             "user_id":userId,
             "book_name":bookName,
@@ -38,7 +39,7 @@ export default class BookRequestScreen extends Component{
     render(){
         return(
             <View style={{flex:1}}>
-            
+      
                <KeyboardAvoidingView style={styles.keyBoardStyle}>
                     <TextInput
                     style={styles.formTextInput}
